@@ -9,10 +9,6 @@ import java.util.regex.Pattern;
 
 public class DirectoryReader {
 
-
-    private Pattern pattern, pattern2, pattern3;
-    private Matcher match, match2, match3;
-
     //итоговый список директорий для поиска
     private List<File> listDirectoryes = new ArrayList<>();
     //лист для удаления файлов которые нужно удалить из listDirectoryes
@@ -29,6 +25,8 @@ public class DirectoryReader {
     }
 
     public List<File> fileReader(String fileName) {
+        Pattern pattern, pattern2, pattern3;
+        Matcher match, match2, match3;
         int lineCount = 0;
 
         try (
