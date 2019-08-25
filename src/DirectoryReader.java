@@ -8,12 +8,11 @@ public class DirectoryReader {
 
 
     private Pattern pattern, pattern2, pattern3;
-    private Matcher match,match2, match3;
+    private Matcher match, match2, match3;
 
-    private List<File> listDirectoryes=new ArrayList<>();//итоговый список директорий для поиска
-    private List<File> toRemove =new ArrayList<>();//лист для удаления файлов которые нужно удалить из listDirectoryes
-    private List<String> removeListFiles =new ArrayList<>();//список файлов которые исключаем из поиска
-
+    private List<File> listDirectoryes = new ArrayList<>();//итоговый список директорий для поиска
+    private List<File> toRemove = new ArrayList<>();//лист для удаления файлов которые нужно удалить из listDirectoryes
+    private List<String> removeListFiles = new ArrayList<>();//список файлов которые исключаем из поиска
 
     public List<File> getListDirectoryes() {
         return listDirectoryes;
@@ -21,8 +20,6 @@ public class DirectoryReader {
     public List<String> getRemoveListFiles() {
         return removeListFiles;
     }
-
-
 
     public List<File> fileReader(String fileName) {
         int lineCount = 0;
@@ -40,9 +37,6 @@ public class DirectoryReader {
             pattern3=Pattern.compile("\"\\w*\\.\\w*\"");// ищем названия файлов которые нужно исключить из поиска
             while ((s = br.readLine()) != null) { // пока readLine() возвращает не null
                 lineCount++;
-
-              //  listDirectoryes.add(new File(s.trim()));
-                System.out.println(s);
                 strForParsing=strForParsing+s;
             }
             match=pattern.matcher(strForParsing.replaceAll("\n","" ));
@@ -65,14 +59,11 @@ public class DirectoryReader {
                 while (match3.find()){
                     removeListFiles.add(match3.group());
                 }
-
             }
-
         } catch (Exception ex) {
             System.out.println("Reading error in line " + lineCount);
             ex.printStackTrace();
         }
         return listDirectoryes;
     }
-
-    }
+}
