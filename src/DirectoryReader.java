@@ -24,7 +24,7 @@ public class DirectoryReader {
         return removeListFiles;
     }
 
-    public List<File> fileReader(String fileName) {
+    public void  fileReader(String fileName) {
         Pattern pattern, pattern2, pattern3;
         Matcher match, match2, match3;
         int lineCount = 0;
@@ -76,6 +76,5 @@ public class DirectoryReader {
             System.out.println("Reading error in line " + lineCount);
             ex.printStackTrace();
         }
-        return listDirectoryes;
     }
 }
