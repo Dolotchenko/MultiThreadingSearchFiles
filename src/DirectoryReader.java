@@ -66,6 +66,7 @@ public class DirectoryReader {
                 listDirectoryes.removeAll(toRemove);
                 buf = match.group();
                 match3 = pattern3.matcher(buf);
+
                 while (match3.find()) {
                     removeListFiles.add(match3.group());
                 }
