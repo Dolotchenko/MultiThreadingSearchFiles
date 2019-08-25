@@ -1,21 +1,18 @@
-import org.junit.Before;
-
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.opentest4j.AssertionFailedError;
 
-import java.io.FileNotFoundException;
-
-import static org.junit.jupiter.api.Assertions.*;
-
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 
 class DirectoryReaderTest {
 
     private DirectoryReader directoryReader;
+
     @BeforeEach
-    public void init(){
-        directoryReader=new DirectoryReader();
+    public void init() {
+        directoryReader = new DirectoryReader();
         directoryReader.fileReader("SettingsForScanning.txt");
 
     }
@@ -37,7 +34,7 @@ class DirectoryReaderTest {
             assertThrows(AssertionFailedError.class, () -> {
                 directoryReader.fileReader("my");
             });
-        } catch (AssertionFailedError e){
+        } catch (AssertionFailedError e) {
             e.getMessage();
         }
     }
