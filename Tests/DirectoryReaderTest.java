@@ -14,6 +14,7 @@ class DirectoryReaderTest {
     private void init() {
         directoryReader = new DirectoryReader();
         directoryReader.fileReader("SettingsForScanning.txt");
+
     }
 
     @Test
