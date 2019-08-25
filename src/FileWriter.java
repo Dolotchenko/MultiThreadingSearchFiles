@@ -8,11 +8,11 @@ public class FileWriter {
 
     public void fileWriter(ConcurrentSkipListSet<String> setResult) {
 
-        try (BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(new FileOutputStream("Files.txt"), "cp1251"), 8 * 1024);
+        try (BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(new FileOutputStream("Files.txt"), "cp1251"), 8 * 1024)
         ) {
             for (String str : setResult)
                 bw.write(str);
-            System.out.println("Запись выполнена");
+            System.out.println("recording completed");
         } catch (IOException ex) {
             System.out.println(ex.getMessage());
         }

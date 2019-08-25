@@ -9,7 +9,8 @@ public class Main {
 
     public static void main(String[] args) {
         ExecutorService executor = Executors.newFixedThreadPool(THREAD_COUNT);
-        ConcurrentSkipListSet<String> allFiles = new ConcurrentSkipListSet<>();//Выбрал этот set потому что он потокобезопасный
+        //Выбрал этот set потому что он потокобезопасный
+        ConcurrentSkipListSet<String> allFiles = new ConcurrentSkipListSet<>();
 
         DirectoryReader directoryReader = new DirectoryReader();
         FileWriter fileWriter = new FileWriter();
@@ -35,9 +36,10 @@ public class Main {
                     synchronized (Main.class) {
                         taskDoneCount++;
                         allFiles.addAll(fileList);
-                        if (taskDoneCount == THREAD_COUNT * directoryReader.getListDirectoryes().size()) {// check if all tasks finished
-                            executor.shutdown(); // shutdown the thread pool
-                            //System.out.println("allFiles = " + allFiles);
+                        // проверяем, выполнились ли все задачи
+                        if (taskDoneCount == THREAD_COUNT * directoryReader.getListDirectoryes().size()) {
+                            // закрываем пул потоков
+                            executor.shutdown();
                             fileWriter.fileWriter(allFiles);
                             System.out.println("allFiles.size() = " + allFiles.size());
                             System.out.println("Time used: " + (System.currentTimeMillis() - startTime) + "ms");

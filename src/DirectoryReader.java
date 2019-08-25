@@ -32,7 +32,7 @@ public class DirectoryReader {
         try (
                 // читаем файл из двоичного потока
                 // в виде текста с нужной кодировкой
-                BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(fileName), "cp1251"));
+                BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(fileName), "cp1251"))
 
         ) {
             String s;
@@ -60,14 +60,12 @@ public class DirectoryReader {
                 buf = match.group(2);
                 match2 = pattern2.matcher(buf);
                 while (match2.find()) {
-                    //System.out.println(match2.group());
                     toRemove.add(new File(match2.group()));
                 }
                 //конечный список директорий, по которым будем искать файлы
                 listDirectoryes.removeAll(toRemove);
                 buf = match.group();
                 match3 = pattern3.matcher(buf);
-                //System.out.println(match3.find());
                 while (match3.find()) {
                     removeListFiles.add(match3.group());
                 }

@@ -11,7 +11,7 @@ class DirectoryReaderTest {
     private DirectoryReader directoryReader;
 
     @BeforeEach
-    public void init() {
+    private void init() {
         directoryReader = new DirectoryReader();
         directoryReader.fileReader("SettingsForScanning.txt");
 
@@ -30,9 +30,8 @@ class DirectoryReaderTest {
     @Test
     void fileReader() throws AssertionFailedError {
         try {
-
             assertThrows(AssertionFailedError.class, () -> {
-                directoryReader.fileReader("my");
+            directoryReader.fileReader("my");
             });
         } catch (AssertionFailedError e) {
             e.getMessage();
